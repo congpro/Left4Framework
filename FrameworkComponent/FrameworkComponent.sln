@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Cache", "Framewor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Config", "Framework.Config\Framework.Config.csproj", "{3B8080B2-7B36-4634-9C96-CEAD9D6B779B}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Framework.Test", "Framework.Test", "{8F11D7E2-FC72-4749-8ECF-68A41CF20F89}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Framework.Test", "Framework.Test\", "{8F11D7E2-FC72-4749-8ECF-68A41CF20F89}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = "SAK"
 		SccAuxPath = "SAK"
@@ -64,69 +64,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Infrastructure", "Framework.Infrastructure\Framework.Infrastructure.csproj", "{70F8F1B0-4060-46D4-B767-4DF6C91008BD}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 15
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs31
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Framework.Cache\\Framework.Cache.csproj
-		SccProjectTopLevelParentUniqueName1 = FrameworkComponent.sln
-		SccProjectName1 = Framework.Cache
-		SccLocalPath1 = Framework.Cache
-		SccProjectUniqueName2 = Framework.Common\\Framework.Common.csproj
-		SccProjectTopLevelParentUniqueName2 = FrameworkComponent.sln
-		SccProjectName2 = Framework.Common
-		SccLocalPath2 = Framework.Common
-		SccProjectUniqueName3 = Framework.Config\\Framework.Config.csproj
-		SccProjectTopLevelParentUniqueName3 = FrameworkComponent.sln
-		SccProjectName3 = Framework.Config
-		SccLocalPath3 = Framework.Config
-		SccProjectUniqueName4 = Framework.DataAccess\\Framework.DataAccess.csproj
-		SccProjectTopLevelParentUniqueName4 = FrameworkComponent.sln
-		SccProjectName4 = Framework.DataAccess
-		SccLocalPath4 = Framework.DataAccess
-		SccProjectUniqueName5 = Framework.log\\Framework.log.csproj
-		SccProjectTopLevelParentUniqueName5 = FrameworkComponent.sln
-		SccProjectName5 = Framework.log
-		SccLocalPath5 = Framework.log
-		SccProjectUniqueName6 = Framework.Multilanguage\\Framework.Multilanguage.csproj
-		SccProjectTopLevelParentUniqueName6 = FrameworkComponent.sln
-		SccProjectName6 = Framework.Multilanguage
-		SccLocalPath6 = Framework.Multilanguage
-		SccProjectUniqueName7 = Framework.Xml\\Framework.Xml.csproj
-		SccProjectTopLevelParentUniqueName7 = FrameworkComponent.sln
-		SccProjectName7 = Framework.Xml
-		SccLocalPath7 = Framework.Xml
-		SccProjectUniqueName8 = Wcf.Contracts\\Wcf.Contracts.csproj
-		SccProjectTopLevelParentUniqueName8 = FrameworkComponent.sln
-		SccProjectName8 = Wcf.Contracts
-		SccLocalPath8 = Wcf.Contracts
-		SccProjectUniqueName9 = Wcf.ServiceProvider\\Wcf.ServiceProvider.csproj
-		SccProjectTopLevelParentUniqueName9 = FrameworkComponent.sln
-		SccProjectName9 = Wcf.ServiceProvider
-		SccLocalPath9 = Wcf.ServiceProvider
-		SccProjectUniqueName10 = Wcf.WebServiceHost\\Wcf.WebServiceHost.csproj
-		SccProjectTopLevelParentUniqueName10 = FrameworkComponent.sln
-		SccProjectName10 = Wcf.WebServiceHost
-		SccLocalPath10 = Wcf.WebServiceHost
-		SccProjectUniqueName11 = Wcf.WebServices\\Wcf.WebServices.csproj
-		SccProjectTopLevelParentUniqueName11 = FrameworkComponent.sln
-		SccProjectName11 = Wcf.WebServices
-		SccLocalPath11 = Wcf.WebServices
-		SccProjectUniqueName12 = Framework.Plugins\\Framework.Plugins.csproj
-		SccProjectTopLevelParentUniqueName12 = FrameworkComponent.sln
-		SccProjectName12 = Framework.Plugins
-		SccLocalPath12 = Framework.Plugins
-		SccProjectUniqueName13 = Framework.Infrastructure\\Framework.Infrastructure.csproj
-		SccProjectTopLevelParentUniqueName13 = FrameworkComponent.sln
-		SccProjectName13 = Framework.Infrastructure
-		SccLocalPath13 = Framework.Infrastructure
-		SccWebProject14 = true
-		SccProjectUniqueName14 = Framework.Test
-		SccProjectName14 = Framework.Test
-		SccLocalPath14 = Framework.Test
-		SccProjectEnlistmentChoice14 = 2
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -296,6 +233,6 @@ Global
 		{70F8F1B0-4060-46D4-B767-4DF6C91008BD} = {A44C96A1-7493-4A23-AE44-7971DCBB6413}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35
 	EndGlobalSection
 EndGlobal
