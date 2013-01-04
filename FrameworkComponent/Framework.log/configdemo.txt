@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+  <configSections>
+    <sectionGroup name="Framework">
+      <section name="Logger" type="Framework.log.LogSectionHandler,Framework.log.Logger" />
+    </sectionGroup>
+  </configSections>
+
+  <Framework>
+    <Logger>
+      <Property name="LogFilePath" value="D:\LogPath" />
+      <Property name="EmailServiceUrl" value="http://mists02:8009/EmailService.asmx" />
+      <Property name="MailFrom" value="xxx@newegg.com" />
+      <Property name="MailTo" value="xxx@newegg.com" />
+      <Property name="MailSubject" value="Error" />
+    </Logger>
+  <Framework>
+  
+</configuration>
