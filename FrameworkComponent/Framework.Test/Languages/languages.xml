@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Resources>
+  <!--<page name="ACTIVEUSERS">-->
+  <Resource tag="zh-cn">zh</Resource>
+  <Resource tag="en-us">en</Resource>
+  <Resource tag="en-uk">uk</Resource>
+ <!--</page>-->
+</Resources>

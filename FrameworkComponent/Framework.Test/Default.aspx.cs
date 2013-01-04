@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Collections;
+using System.Linq;
+using System.Dynamic;
+
+using Framework.DataAccess;
+using System.Data.Common;
+using Framework.DataAccess.ORM;
+using Framework.DataAccess.ORM.FluentData;
+
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //IDataProvider provider = DataContext.CreateDefaultInstance();
+        //IDataProvider provider = DataContext.CreateInstance("sql");
+
+        if (!IsPostBack)
+        {
+            //System.Linq.Enumerable.
+
+           // IEnumerable able = new ArrayList();
+            //IEnumerable<Dynamic> able;
+            string conname = @"Connection String";
+            //DapperAccess access = new DapperAccess(conname);
+            string sql = "SELECT top 1 * FROM  dbo.tblUserSetting";
+            //var able = access.Query(sql);
+            //DataTable table = ToDataTable(able);
+            IDbProvider provider = new SqlServerProvider();
+
+            //DataTable table =  FlexAccess.CreateContext(conname,DbProviderTypes.SqlServer).Sql("SELECT top 1 * FROM  dbo.tblUserSetting").QueryDataTable();
+            DataTable table = FlexAccess.CreateContext(conname, provider)
+                                        .Sql("SELECT top 1 * FROM  dbo.tblUserSetting")
+                                        .QuerySingle<DataTable>();
+            //Repeater1.DataSource = table ;
+            //Repeater1.DataBind();
+            //var result = from p in able select p;
+            
+            GridView1.DataSource = table;
+            //DataSet data = provider.ExecuteDataSet("select * from jcms_normal_user_cart",CommandType.Text);
+            //GridView1.DataSource = table;
+            GridView1.DataBind();
+        }
+    }
+
+    public static DataTable ToDataTable(IEnumerable list)
+    {
+        //创建属性的集合  
+        List<PropertyInfo> pList = new List<PropertyInfo>();
+        //获得反射的入口  
+        Type type = list.AsQueryable().ElementType;
+        DataTable dt = new DataTable();
+        //把所有的public属性加入到集合 并添加DataTable的列  
+        Array.ForEach<PropertyInfo>(type.GetProperties(), p => { pList.Add(p); dt.Columns.Add(p.Name, p.PropertyType); });
+        foreach (var item in list)
+        {
+            //创建一个DataRow实例  
+            DataRow row = dt.NewRow();
+            //给row 赋值  
+            pList.ForEach(p => row[p.Name] = p.GetValue(item, null));
+            //加入到DataTable  
+            dt.Rows.Add(row);
+        }
+        return dt;
+    }  
+}

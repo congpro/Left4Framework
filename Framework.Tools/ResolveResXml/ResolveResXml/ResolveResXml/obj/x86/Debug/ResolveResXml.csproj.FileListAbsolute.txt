@@ -1,0 +1,13 @@
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\bin\Debug\ResolveResXml.exe.config
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\ResolveResXml.CreateResXml.resources
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\ResolveResXml.MainForm.resources
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\ResolveResXml.Properties.Resources.resources
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\bin\Debug\ResolveResXml.exe
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\bin\Debug\ResolveResXml.pdb
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\bin\Debug\Maticsoft.Common.dll
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\bin\Debug\System.Data.SQLite.DLL
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\ResolveResXml.exe
+E:\TFS\bluexray\Framework.Tools\ResolveResXml\ResolveResXml\ResolveResXml\obj\x86\Debug\ResolveResXml.pdb

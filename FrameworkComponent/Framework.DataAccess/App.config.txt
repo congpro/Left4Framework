@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<configuration>
+    <configSections>
+        <section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" requirePermission="true"/>
+    </configSections>
+    <dataConfiguration defaultDatabase="Connection String"/>
+    <connectionStrings>
+        <add name="Connection String" connectionString="Database=Database;Server=(local)\sql2008;Integrated Security=SSPI" providerName="System.Data.SqlClient"/>
+    </connectionStrings>
+<startup><supportedRuntime version="v2.0.50727"/></startup></configuration>
+
+  <appSettings>
+    <add key="MYSQL" value="server=localhost;user id=root;password=XXXX;database=baby" />
+  </appSettings>
+
+
+ <configuration>
+	<connectionStrings>
+		<add name="MasterConnectionString" connectionString="Data Source=(local);Initial Catalog=Master;Integrated Security=True;Connect Timeout=15"/>
+	</connectionStrings>
+</configuration>
