@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Web;
 using System.Web.UI;
@@ -9,11 +10,12 @@ using System.Data;
 using System.Collections;
 using System.Linq;
 using System.Dynamic;
-
-using Framework.DataAccess;
 using System.Data.Common;
+
+
 using Framework.DataAccess.ORM;
 using Framework.DataAccess.ORM.FluentData;
+using Framework.DataAccess;
 
 
 public partial class _Default : System.Web.UI.Page
@@ -70,5 +72,15 @@ public partial class _Default : System.Web.UI.Page
             dt.Rows.Add(row);
         }
         return dt;
-    }  
+    }
+
+
+    public void Test()
+    {
+        //前面2个int为所需要的参数,第3个int 则为返回值的类型
+        Expression<Func<int, int, int>> expression = (a, b) => a + b;
+        int result = expression.Compile()(2, 3);
+
+       Expression<Func<int,object>> exp = (c) =>c+10;
+    }
 }
