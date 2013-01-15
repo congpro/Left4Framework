@@ -54,7 +54,7 @@ namespace Framework.Infrastructure
         private void InitializeContainer(ContainerConfigurer configurer, EventBroker broker, FrameworkConfig config)
         {
             var builder = new ContainerBuilder();
-
+            
             _containerManager = new ContainerManager(builder.Build());
             configurer.Configure(this, _containerManager, broker, config);
         }

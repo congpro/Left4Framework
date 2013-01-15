@@ -25,10 +25,26 @@ namespace Framework.Infrastructure
 
         #region Ctor
 
-        public WebAppTypeFinder(FrameworkConfig config)
+        //是否启用动态发现
+        //public WebAppTypeFinder(FrameworkConfig config)
+        //{
+        //    if (config!=null)
+        //    {
+        //        this._ensureBinFolderAssembliesLoaded = config.DynamicDiscovery;
+        //    }
+        //    else
+        //    {
+        //        this._ensureBinFolderAssembliesLoaded = true; 
+        //    }
+            
+        //}
+
+        public WebAppTypeFinder()
         {
-            this._ensureBinFolderAssembliesLoaded = config.DynamicDiscovery;
+            this._ensureBinFolderAssembliesLoaded = true;
         }
+
+        
 
         #endregion
 

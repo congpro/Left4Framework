@@ -11,12 +11,12 @@ using System.Collections;
 using System.Linq;
 using System.Dynamic;
 using System.Data.Common;
-
-
+using Autofac;
 using Framework.DataAccess.ORM;
 using Framework.DataAccess.ORM.FluentData;
 using Framework.DataAccess;
-
+using Framework.Infrastructure;
+using Framework.Infrastructure.DependencyManagement;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -37,9 +37,17 @@ public partial class _Default : System.Web.UI.Page
             //var able = access.Query(sql);
             //DataTable table = ToDataTable(able);
             IDbProvider provider = new SqlServerProvider();
+            ContainerBuilder bulider = new ContainerBuilder();
+            bulider.RegisterType<SqlServerProvider>().As<IDbProvider>();
+            var container = bulider.Build();
+            //var hander=container.Resolve<IDbProvider>();
 
+            
+            var hander = EngineContext.Current.Resolve<IDbProvider>();
+            //var hander =  EngineContext.CreateEngineInstance(null).ContainerManager.Resolve<SqlServerProvider>();
+            
             //DataTable table =  FlexAccess.CreateContext(conname,DbProviderTypes.SqlServer).Sql("SELECT top 1 * FROM  dbo.tblUserSetting").QueryDataTable();
-            DataTable table = FlexAccess.CreateContext(conname, provider)
+            DataTable table = FlexAccess.CreateContext(conname, hander)
                                         .Sql("SELECT top 1 * FROM  dbo.tblUserSetting")
                                         .QuerySingle<DataTable>();
             //Repeater1.DataSource = table ;

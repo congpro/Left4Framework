@@ -23,7 +23,7 @@ namespace Framework.Infrastructure.DependencyManagement
         public virtual void Configure(IEngine engine, ContainerManager containerManager, EventBroker broker, FrameworkConfig configuration)
         {
             //other dependencies
-            containerManager.AddComponentInstance<FrameworkConfig>(configuration, "framework.configuration");
+            //containerManager.AddComponentInstance<FrameworkConfig>(configuration, "framework.configuration");
             containerManager.AddComponentInstance<IEngine>(engine, "framework.engine");
             containerManager.AddComponentInstance<ContainerConfigurer>(this, "framework.containerConfigurer");
 

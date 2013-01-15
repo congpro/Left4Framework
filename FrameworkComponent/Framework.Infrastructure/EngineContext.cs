@@ -22,9 +22,10 @@ namespace Framework.Infrastructure
             {
                 var config = ConfigurationManager.GetSection("umcConfig") as FrameworkConfig;
                 Debug.WriteLine("Constructing engine " + DateTime.Now);
-                Singleton<IEngine>.Instance = CreateEngineInstance(config);
+                Singleton<IEngine>.Instance = CreateEngineInstance(null);
                 Debug.WriteLine("Initializing engine " + DateTime.Now);
-                Singleton<IEngine>.Instance.Initialize(config);
+                Singleton<IEngine>.Instance = CreateEngineInstance(null);
+                //Singleton<IEngine>.Instance.Initialize(config);
             }
             return Singleton<IEngine>.Instance;
         }
@@ -58,7 +59,7 @@ namespace Framework.Infrastructure
 
         #endregion
 
-        /// <summary>Gets the singleton Nop engine used to access Nop services.</summary>
+        /// <summary>Gets the singleton framework engine used to access framework services.</summary>
         public static IEngine Current
         {
             get
