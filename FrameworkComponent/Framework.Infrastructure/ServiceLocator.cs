@@ -51,7 +51,7 @@ namespace Framework.Infrastructure
             return Activator.CreateInstance(engineType) as IServices;
         }
 
-        /// <summary>Gets the singleton Nop engine used to access Nop services.</summary>
+        /// <summary>Gets the singleton umc framework engine used to access framework services.</summary>
         public static IServices Current
         {
             get

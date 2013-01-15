@@ -52,6 +52,7 @@
     <Compile Include="BaseConfigInfoProvider.cs" />
     <Compile Include="BaseConfigs.cs" />
     <Compile Include="DefaultConfigFileManager.cs" />
+    <Compile Include="FrameworkConfig.cs" />
     <Compile Include="IConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,9 +7,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Autofac;
+using Framework.Infrastructure.DependencyManagement;
+
 
 namespace Framework.Infrastructure
 {
@@ -171,8 +172,8 @@ namespace Framework.Infrastructure
         {
             try
             {
-                //return AutofacRequestLifetimeHttpModule.GetLifetimeScope(Container, null);
-                return null;
+                return AutofacRequestLifetimeHttpModule.GetLifetimeScope(Container, null);
+                //return null;
             }
             catch
             {
