@@ -24,7 +24,7 @@ namespace Framework.Infrastructure
                 Debug.WriteLine("Constructing engine " + DateTime.Now);
                 Singleton<IEngine>.Instance = CreateEngineInstance(null);
                 Debug.WriteLine("Initializing engine " + DateTime.Now);
-                Singleton<IEngine>.Instance = CreateEngineInstance(null);
+                Singleton<IEngine>.Instance.Initialize(null);
                 //Singleton<IEngine>.Instance.Initialize(config);
             }
             return Singleton<IEngine>.Instance;
