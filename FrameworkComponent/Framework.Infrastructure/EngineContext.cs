@@ -13,7 +13,7 @@ namespace Framework.Infrastructure
     public  class EngineContext 
     {
         #region Initialization Methods
-        /// <summary>Initializes a static instance of the Nop factory.</summary>
+        /// <summary>Initializes a static instance of the umc factory.</summary>
         /// <param name="forceRecreate">Creates a new factory instance even though the factory has been previously initialized.</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static IEngine Initialize(bool forceRecreate)
@@ -22,9 +22,11 @@ namespace Framework.Infrastructure
             {
                 var config = ConfigurationManager.GetSection("umcConfig") as FrameworkConfig;
                 Debug.WriteLine("Constructing engine " + DateTime.Now);
-                Singleton<IEngine>.Instance = CreateEngineInstance(null);
+
+                Singleton<IEngine>.Instance = CreateEngineInstance(config??null);
+
                 Debug.WriteLine("Initializing engine " + DateTime.Now);
-                Singleton<IEngine>.Instance.Initialize(null);
+                Singleton<IEngine>.Instance.Initialize(config??null);
                 //Singleton<IEngine>.Instance.Initialize(config);
             }
             return Singleton<IEngine>.Instance;
@@ -48,9 +50,9 @@ namespace Framework.Infrastructure
             {
                 var engineType = Type.GetType(config.EngineType);
                 if (engineType == null)
-                    throw new ConfigurationErrorsException("The type '" + engineType + "' could not be found. Please check the configuration at /configuration/nop/engine[@engineType] or check for missing assemblies.");
+                    throw new ConfigurationErrorsException("The type '" + engineType + "' could not be found. Please check the configuration at /configuration/umcconfig/engine[@engineType] or check for missing assemblies.");
                 if (!typeof(IEngine).IsAssignableFrom(engineType))
-                    throw new ConfigurationErrorsException("The type '" + engineType + "' doesn't implement 'Nop.Core.Infrastructure.IEngine' and cannot be configured in /configuration/nop/engine[@engineType] for that purpose.");
+                    throw new ConfigurationErrorsException("The type '" + engineType + "' doesn't implement 'Framework.Infrastructure.IEngine' and cannot be configured in /configuration/nop/engine[@engineType] for that purpose.");
                 return Activator.CreateInstance(engineType) as IEngine;
             }
 
