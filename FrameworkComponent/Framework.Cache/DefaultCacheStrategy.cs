@@ -16,7 +16,7 @@ using System.Web.Caching;
 
 namespace Framework.Cache
 {
-    public class DefaultCacheStrategy:ICache
+    public class DefaultCacheStrategy:ICacheStrategy
     {
         private static readonly DefaultCacheStrategy instance = new DefaultCacheStrategy();
 
@@ -28,18 +28,6 @@ namespace Framework.Cache
         {
             set { _timeOut = value > 0 ? value : 6000; }
             get { return _timeOut > 0 ? _timeOut : 6000; }
-        }
-
-        public object this[string key]
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
 
 

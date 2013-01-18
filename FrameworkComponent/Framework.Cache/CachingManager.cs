@@ -27,7 +27,7 @@ namespace Framework.Cache
             if (type == "2")
                 cs = new MemcachedProvider();
             else
-                cs = new DefaultCacheStrategy();
+                cs = new MemoryProvider();
         }
 
         public static CachingManager CreateInstance()
