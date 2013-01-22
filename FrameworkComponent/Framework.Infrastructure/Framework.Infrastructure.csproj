@@ -72,6 +72,13 @@
     <Compile Include="DependencyManagement\IDependencyRegistrar.cs" />
     <Compile Include="EngineContext.cs" />
     <Compile Include="EventBroker.cs" />
+    <Compile Include="Fakes\Extentions.cs" />
+    <Compile Include="Fakes\FakeHttpContext.cs" />
+    <Compile Include="Fakes\FakeHttpRequest.cs" />
+    <Compile Include="Fakes\FakeHttpResponse.cs" />
+    <Compile Include="Fakes\FakeHttpSessionState.cs" />
+    <Compile Include="Fakes\FakeIdentity.cs" />
+    <Compile Include="Fakes\FakePrincipal.cs" />
     <Compile Include="FrameworkEngine.cs" />
     <Compile Include="FrameworkVersion.cs" />
     <Compile Include="IEngine.cs" />

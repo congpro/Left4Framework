@@ -23,10 +23,10 @@ namespace Framework.Infrastructure
                 var config = ConfigurationManager.GetSection("umcConfig") as FrameworkConfig;
                 Debug.WriteLine("Constructing engine " + DateTime.Now);
 
-                Singleton<IEngine>.Instance = CreateEngineInstance(config??null);
+                Singleton<IEngine>.Instance = CreateEngineInstance(null);
 
                 Debug.WriteLine("Initializing engine " + DateTime.Now);
-                Singleton<IEngine>.Instance.Initialize(config??null);
+                Singleton<IEngine>.Instance.Initialize(null);
                 //Singleton<IEngine>.Instance.Initialize(config);
             }
             return Singleton<IEngine>.Instance;

@@ -51,17 +51,18 @@ namespace Framework.Common
         }
 
         /// <summary>
-        /// 将Object序列化到XML文件
+        /// 将Object序列化到当前工作目录的XML文件
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="fileName"></param>
+        /// <param name="fileName">序列化的xml文件名字</param>
         public static void SerializeObject<T>(string fileName, T obj) where T : class
         {
             FileStream fs = null;
             try
             {
+                var path  =  fileName+".xml";
                 XmlSerializer serializer = new XmlSerializer(typeof(T));
-                fs = new FileStream(fileName, FileMode.Create);
+                fs = new FileStream(path, FileMode.Create);
                 serializer.Serialize(fs, obj);
             }
             catch (Exception ex)

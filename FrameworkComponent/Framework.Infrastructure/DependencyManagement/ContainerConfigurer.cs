@@ -30,12 +30,15 @@ namespace Framework.Infrastructure.DependencyManagement
             //type finder
             containerManager.AddComponent<ITypeFinder, WebAppTypeFinder>("framework.typeFinder");
 
+
+
             //register dependencies provided by other assemblies
             var typeFinder = containerManager.Resolve<ITypeFinder>();
             containerManager.UpdateContainer(x =>
             {
                 var drTypes = typeFinder.FindClassesOfType<IDependencyRegistrar>();
                 var drInstances = new List<IDependencyRegistrar>();
+                //循环注册遍历实现IDependencyRegistrar接口的类
                 foreach (var drType in drTypes)
                     drInstances.Add((IDependencyRegistrar)Activator.CreateInstance(drType));
                 //sort

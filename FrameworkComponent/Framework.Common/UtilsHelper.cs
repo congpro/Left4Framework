@@ -413,5 +413,51 @@ namespace Framework.Common
             return promotion_codes;
         }
 
+        /// <summary>
+        /// 返回文件是否存在
+        /// </summary>
+        /// <param name="filename">文件名</param>
+        /// <returns>是否存在</returns>
+        public static bool FileExists(string filename)
+        {
+            return File.Exists(filename);
+        }
+
+        /// <summary>
+        /// 分割字符串
+        /// </summary>
+        public static string[] SplitString(string strContent, string strSplit)
+        {
+            if (!String.IsNullOrEmpty(strContent))
+            {
+                if (strContent.IndexOf(strSplit) < 0)
+                    return new string[] { strContent };
+
+                return Regex.Split(strContent, Regex.Escape(strSplit), RegexOptions.IgnoreCase);
+            }
+            else
+                return new string[0] { };
+        }
+
+        /// <summary>
+        /// 分割字符串
+        /// </summary>
+        /// <returns></returns>
+        public static string[] SplitString(string strContent, string strSplit, int count)
+        {
+            string[] result = new string[count];
+            string[] splited = SplitString(strContent, strSplit);
+
+            for (int i = 0; i < count; i++)
+            {
+                if (i < splited.Length)
+                    result[i] = splited[i];
+                else
+                    result[i] = string.Empty;
+            }
+
+            return result;
+        }
+
     }
 }

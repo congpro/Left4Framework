@@ -57,6 +57,7 @@
     <Compile Include="CookieHelper.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="HttpHelper.cs" />
     <Compile Include="ImageHelper.cs" />
     <Compile Include="IO\FileSystemSettings.cs" />
     <Compile Include="IO\FileSystemStorageProvider.cs" />

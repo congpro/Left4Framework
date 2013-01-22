@@ -37,6 +37,10 @@ namespace Framework.Cache
 
         public void Add(string key, object value, ICacheDependency cacheDependency)
         {
+            //using (IRedisClient redis = RedisStrategy.Ininit())
+            //{
+                
+            //}
             throw new NotImplementedException();
         }
 

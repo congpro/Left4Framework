@@ -1,72 +1,97 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
+
+
+using Framework.Config;
+using ServiceStack.Redis;
+using ServiceStack.Redis.Generic;
+using ServiceStack.Redis.Support;
+using Framework.Common;
 
 namespace Framework.Cache
 {
-    public class RedisStrategy:ICacheStrategy
+    public sealed class RedisStrategy : ICacheStrategy
     {
+       /// <summary>
+       /// 配置文件所在路径
+       /// </summary>
+       public  static string filename = null;
 
-        public int Count
-        {
-            get { throw new NotImplementedException(); }
-        }
+       private static RedisConfigInfo redisConfigInfo;
 
-        public void Add(string key, object value, ICacheDependency cacheDependency)
-        {
-            throw new NotImplementedException();
-        }
+       private static PooledRedisClientManager prcm;
 
-        public void Add(string key, object value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddObjectWithTimeout(string key, object value, int timeoutSec)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Get(string key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool TryGet(string key, out object value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(string key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(string key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Get<T>(string strCacheKey)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int TimeOut
+        private static string ConfigPath 
         {
             get
             {
-                throw new NotImplementedException();
-            }
-            set
+                if (filename == null)
+                {
+                    HttpContext context = HttpContext.Current;
+                    if (context != null)
+                    {
+                        filename = context.Server.MapPath("~/redis.config");
+                        if (!File.Exists(filename))
+                        {
+                            filename = context.Server.MapPath("/redis.config");
+                        }
+                    }
+                    else
+                    {
+                        filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "redis.config");
+                    }
+
+                    if (!File.Exists(filename))
+                    {
+                        throw new FileLoadException("发生错误: 虚拟目录或网站根目录下没有正确的Redis.config文件");
+                    }
+                }
+                return filename;
+            }   
+        }
+
+
+
+        public static  IRedisClient Initialize()
+        {
+            GetRedisConfig();
+
+           if (prcm == null)
+               CreateManager();
+
+           return prcm.GetClient();
+       }
+
+       /// <summary>
+       /// 创建链接池管理对象
+       /// </summary>
+       private static void CreateManager()
+       {
+           string[] writeServerList = UtilsHelper.SplitString(redisConfigInfo.WriteServerList, ",");
+           string[] readServerList = UtilsHelper.SplitString(redisConfigInfo.ReadServerList, ",");
+
+           prcm = new PooledRedisClientManager(readServerList, writeServerList,
+                            new RedisClientManagerConfig
+                            {
+                                MaxWritePoolSize = redisConfigInfo.MaxWritePoolSize,
+                                MaxReadPoolSize = redisConfigInfo.MaxReadPoolSize,
+                                AutoStart = redisConfigInfo.AutoStart,
+                            });
+       }
+
+        private static void GetRedisConfig()
+        {
+            if (UtilsHelper.FileExists(ConfigPath))
             {
-                throw new NotImplementedException();
+                redisConfigInfo = SerializeHelper.GetDeserializedObject<RedisConfigInfo>(ConfigPath);
+            }
+            else
+            {
+                throw new FileLoadException("发生错误: 虚拟目录或网站根目录下没有正确的Redis.config文件");
             }
         }
     }
