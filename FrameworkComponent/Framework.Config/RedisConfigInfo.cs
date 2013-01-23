@@ -27,7 +27,7 @@ namespace Framework.Config
             }
         }
 
-        private string _writeServerList;
+        private string _writeServerList = "";
         /// <summary>
         /// 可写的Redis链接地址
         /// </summary>
@@ -43,7 +43,7 @@ namespace Framework.Config
             }
         }
 
-        private string _readServerList;
+        private string _readServerList="";
         /// <summary>
         /// 可读的Redis链接地址
         /// </summary>

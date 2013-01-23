@@ -11,8 +11,10 @@ using ServiceStack.Redis.Generic;
 
 namespace Framework.Cache
 {
-     class RedisProvider :ICache
+    public class RedisProvider :ICache,IDisposable
     {
+        private IRedisClient _redis = RedisStrategy.Initialize();
+
         public object this[string key]
         {
             get
@@ -32,21 +34,17 @@ namespace Framework.Cache
 
         public int Count
         {
-            get { throw new NotImplementedException(); }
+            get { return this._redis.GetAllKeys().Count; }
         }
 
         public void Add(string key, object value, ICacheDependency cacheDependency)
         {
-            //using (IRedisClient redis = RedisStrategy.Ininit())
-            //{
-                
-            //}
             throw new NotImplementedException();
         }
 
         public void Add(string key, object value)
         {
-            throw new NotImplementedException();
+            this._redis.Set<byte[]>(key, new ObjectSerializer().Serialize(value));
         }
 
         public void AddObjectWithTimeout(string key, object value, int timeoutSec)
@@ -54,45 +52,59 @@ namespace Framework.Cache
             throw new NotImplementedException();
         }
 
+        public void Add<T>(string key, T t)
+        {
+            this._redis.Set<T>(key, t);
+        }
+
         public object Get(string key)
         {
-            throw new NotImplementedException();
+            return this._redis.Get<object>(key);
         }
 
         public bool TryGet(string key, out object value)
         {
-            throw new NotImplementedException();
+            value = this._redis.Get<object>(key);
+            return value!=null;
         }
 
         public void Remove(string key)
         {
-            throw new NotImplementedException();
+            this._redis.Remove(key);
         }
 
         public bool Contains(string key)
         {
-            throw new NotImplementedException();
+           return this._redis.ContainsKey(key);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+           this._redis.FlushAll();
         }
 
         public T Get<T>(string strCacheKey)
         {
-            throw new NotImplementedException();
+          return  this._redis.Get<T>(strCacheKey);
         }
 
         public int TimeOut
         {
             get
             {
-                throw new NotImplementedException();
+                return 3600;
             }
             set
             {
                 throw new NotImplementedException();
+            }
+        }
+
+        public void Dispose()
+        {
+            if (this._redis!=null)
+            {
+                this._redis.Dispose();
             }
         }
     }
