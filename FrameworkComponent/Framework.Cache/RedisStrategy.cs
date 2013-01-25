@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*code by bluexray
+ * cache Manager 4 redis
+ */
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Web;
-
 
 using Framework.Config;
 using ServiceStack.Redis;
-using ServiceStack.Redis.Generic;
-using ServiceStack.Redis.Support;
 using Framework.Common;
 
 namespace Framework.Cache

@@ -55,6 +55,7 @@
     <Compile Include="CaptchaHelper.cs" />
     <Compile Include="ConverterHelper.cs" />
     <Compile Include="CookieHelper.cs" />
+    <Compile Include="EmitHelper.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="HttpHelper.cs" />
@@ -66,8 +67,10 @@
     <Compile Include="IO\IStorageProvider.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="LogHelper.cs" />
+    <Compile Include="MemberFlags.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializeHelper.cs" />
+    <Compile Include="Types.cs" />
     <Compile Include="UtilsHelper.cs" />
     <Compile Include="YMZHelper.cs" />
   </ItemGroup>

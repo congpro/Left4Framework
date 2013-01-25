@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Linq.Expressions;
+using System.Reflection;
 
 using Autofac;
+using Autofac.Builder;
 using Autofac.Integration.Mvc;
 using Framework.DataAccess.ORM.FluentData;
 using Framework.Infrastructure;
 using Framework.DataAccess.ORM;
 using Framework.Infrastructure.Fakes;
+using Framework.Cache;
+
 
 /// <summary>
 /// 依赖注入注册容器类 的摘要说明
@@ -41,6 +46,9 @@ public class DependencyRegistrar:IDependencyRegistrar
 
 
         builder.RegisterType<SqlServerProvider>().As<IDbProvider>();
+
+        var list = typeFinder.FindClassesOfType<ICache>().ToList();
+        //list.ForEach(s=>builder.RegisterType<s>());
     }
 
     public int Order

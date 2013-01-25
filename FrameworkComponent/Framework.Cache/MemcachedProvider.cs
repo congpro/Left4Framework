@@ -16,19 +16,20 @@ using System.Text;
 using NorthScale.Store;
 using Enyim.Caching.Memcached;
 using log4net;
+using Couchbase;
 
 namespace Framework.Cache
 {
     public class MemcachedProvider : ICache
     {
 
-        private static NorthScaleClient client;
+        private static CouchbaseClient client;
 
         static MemcachedProvider()
         {
             try
             {
-                client = new NorthScaleClient();
+                client = new CouchbaseClient();
             }
             catch (Exception ex)
             {

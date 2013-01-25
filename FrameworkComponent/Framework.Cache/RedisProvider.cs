@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* code by bluexray
+ * redis client 4 ServiceStack.Redis
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,19 +50,67 @@ namespace Framework.Cache
             this._redis.Set<byte[]>(key, new ObjectSerializer().Serialize(value));
         }
 
-        public void AddObjectWithTimeout(string key, object value, int timeoutSec)
+        /// <summary>
+        /// 增加一个数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="expireat">过期的时间点</param>
+        public void Add<T>(string key, T value, DateTime expireat)
         {
-            throw new NotImplementedException();
+            this._redis.Set(key, value, expireat);
         }
 
         public void Add<T>(string key, T t)
         {
             this._redis.Set<T>(key, t);
+        }   
+
+        public void AddObjectWithTimeout(string key, object value, int timeoutSec)
+        {
+            throw new NotImplementedException();
         }
 
-        public object Get(string key)
+        public  object Get(string key)
         {
             return this._redis.Get<object>(key);
+        }
+
+        public List<string> GetAllKeys()
+        {
+            return SearchKeys("*");
+        }
+
+        public List<string> SearchKeys(string pattern)
+        {
+            var result = this._redis.SearchKeys(pattern);
+            return result;
+        }
+
+        public List<string> GetValues(List<string> keys)
+        {
+            if (keys == null) throw new ArgumentNullException("keys");
+            if (keys.Count == 0) return new List<string>();
+
+            var  results =this._redis.GetValues<string>(keys);
+
+            return results;
+        }
+
+        public List<T> GetValues<T>(List<string> keys)
+        {
+            if (keys == null) throw new ArgumentNullException("keys");
+            if (keys.Count == 0) return new List<T>();
+
+            var result = this._redis.GetValues<T>(keys);
+            return result;
+        }
+
+        public bool Replace<T>(string key, T value)
+        {
+            var result = this._redis.Replace(key, value);
+            return result;
         }
 
         public bool TryGet(string key, out object value)
@@ -96,7 +147,7 @@ namespace Framework.Cache
             }
             set
             {
-                throw new NotImplementedException();
+               this.TimeOut = value;
             }
         }
 

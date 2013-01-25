@@ -31,7 +31,6 @@ namespace Framework.Infrastructure.DependencyManagement
             containerManager.AddComponent<ITypeFinder, WebAppTypeFinder>("framework.typeFinder");
 
 
-
             //register dependencies provided by other assemblies
             var typeFinder = containerManager.Resolve<ITypeFinder>();
             containerManager.UpdateContainer(x =>
