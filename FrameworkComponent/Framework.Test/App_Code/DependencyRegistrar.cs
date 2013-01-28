@@ -8,11 +8,11 @@ using System.Reflection;
 using Autofac;
 using Autofac.Builder;
 using Autofac.Integration.Mvc;
+using Framework.Cache;
 using Framework.DataAccess.ORM.FluentData;
 using Framework.Infrastructure;
 using Framework.DataAccess.ORM;
 using Framework.Infrastructure.Fakes;
-using Framework.Cache;
 
 
 /// <summary>
@@ -47,10 +47,12 @@ public class DependencyRegistrar:IDependencyRegistrar
 
         builder.RegisterType<SqlServerProvider>().As<IDbProvider>();
 
-        var list = typeFinder.FindClassesOfType<ICache>().ToList();
+         var list = typeFinder.FindClassesOfType<ICache>().ToList();
+        list.ForEach(s=>builder.RegisterType(s));
         //list.ForEach(s=>builder.RegisterType<s>());
     }
 
+    //数字越大对象越延迟注册
     public int Order
     {
         get { return 0; }

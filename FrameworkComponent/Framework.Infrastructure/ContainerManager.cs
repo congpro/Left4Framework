@@ -7,8 +7,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Web;
 using Autofac;
+using Autofac.Integration.Mvc;
 using Framework.Infrastructure.DependencyManagement;
 
 
@@ -131,7 +132,7 @@ namespace Framework.Infrastructure
             return Scope().ResolveKeyed<IEnumerable<T>>(key).ToArray();
         }
 
-        public T ResolveUnregistered<T>() where T:class
+        public T ResolveUnregistered<T>() where T : class
         {
             return ResolveUnregistered(typeof(T)) as T;
         }
@@ -161,6 +162,22 @@ namespace Framework.Infrastructure
             throw new Exception("No contructor was found that had all the dependencies satisfied.");
         }
 
+        public bool TryResolve(Type serviceType, out object instance)
+        {
+            return Scope().TryResolve(serviceType, out instance);
+        }
+
+        public bool IsRegistered(Type serviceType)
+        {
+            return Scope().IsRegistered(serviceType);
+        }
+
+        public object ResolveOptional(Type serviceType)
+        {
+            return Scope().ResolveOptional(serviceType);
+        }
+
+
         public void UpdateContainer(Action<ContainerBuilder> action)
         {
             var builder = new ContainerBuilder();
@@ -173,7 +190,6 @@ namespace Framework.Infrastructure
             try
             {
                 return AutofacRequestLifetimeHttpModule.GetLifetimeScope(Container, null);
-                //return null;
             }
             catch
             {
@@ -181,7 +197,6 @@ namespace Framework.Infrastructure
             }
         }
     }
-
     public static class ContainerManagerExtensions
     {
         public static Autofac.Builder.IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> PerLifeStyle<TLimit, TActivatorData, TRegistrationStyle>(this Autofac.Builder.IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> builder, ComponentLifeStyle lifeStyle)
@@ -189,7 +204,7 @@ namespace Framework.Infrastructure
             switch (lifeStyle)
             {
                 case ComponentLifeStyle.LifetimeScope:
-                    //xreturn HttpContext.Current != null ? builder.InstancePerHttpRequest() : builder.InstancePerLifetimeScope();
+                    return HttpContext.Current != null ? builder.InstancePerHttpRequest() : builder.InstancePerLifetimeScope();
                 case ComponentLifeStyle.Transient:
                     return builder.InstancePerDependency();
                 case ComponentLifeStyle.Singleton:

@@ -70,6 +70,7 @@
     <Compile Include="DependencyManagement\ContainerConfigurer.cs" />
     <Compile Include="DependencyManagement\DependencyAttributeRegistrator.cs" />
     <Compile Include="DependencyManagement\IDependencyRegistrar.cs" />
+    <Compile Include="DependencyResolver.cs" />
     <Compile Include="EngineContext.cs" />
     <Compile Include="EventBroker.cs" />
     <Compile Include="Fakes\Extentions.cs" />

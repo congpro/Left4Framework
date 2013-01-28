@@ -12,10 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
-using NorthScale.Store;
 using Enyim.Caching.Memcached;
-using log4net;
 using Couchbase;
 
 namespace Framework.Cache
