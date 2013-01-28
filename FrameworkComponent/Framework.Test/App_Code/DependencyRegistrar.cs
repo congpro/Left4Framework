@@ -47,6 +47,8 @@ public class DependencyRegistrar:IDependencyRegistrar
 
         builder.RegisterType<SqlServerProvider>().As<IDbProvider>();
 
+        builder.RegisterType<MemoryProvider>().Named<ICache>("memory");
+
          var list = typeFinder.FindClassesOfType<ICache>().ToList();
         list.ForEach(s=>builder.RegisterType(s));
         //list.ForEach(s=>builder.RegisterType<s>());

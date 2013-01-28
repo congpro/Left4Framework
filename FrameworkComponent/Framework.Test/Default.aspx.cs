@@ -61,7 +61,9 @@ public partial class _Default : System.Web.UI.Page
                                         .Sql("SELECT top 1 * FROM  dbo.tblUserSetting")
                                         .QuerySingle<DataTable>();
 
-            var cache = EngineContext.Current.Resolve<ICache>();
+           // var cache = EngineContext.Current.Resolve<ICache>();
+
+            var cache = EngineContext.Current.Resolve<ICache>("memory");
             
             //Repeater1.DataSource = table ;
             //Repeater1.DataBind();
