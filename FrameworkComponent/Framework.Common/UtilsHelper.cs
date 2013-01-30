@@ -430,7 +430,7 @@ namespace Framework.Common
         {
             if (!String.IsNullOrEmpty(strContent))
             {
-                if (strContent.IndexOf(strSplit) < 0)
+                if (strContent.IndexOf(strSplit, System.StringComparison.Ordinal) < 0)
                     return new string[] { strContent };
 
                 return Regex.Split(strContent, Regex.Escape(strSplit), RegexOptions.IgnoreCase);
@@ -457,6 +457,15 @@ namespace Framework.Common
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// 获取Guid序列值
+        /// </summary>
+        /// <returns></returns>
+        public static string GetGuidHash()
+        {
+            return Guid.NewGuid().ToString().GetHashCode().ToString("x");
         }
 
     }
