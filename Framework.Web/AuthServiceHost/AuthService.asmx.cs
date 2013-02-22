@@ -22,7 +22,7 @@ namespace AuthServiceHost
         /// <param name="Token"></param>
         /// <returns></returns>
         [WebMethod]
-        public bool IsUserLoggedIn(string Token)
+        internal bool IsUserLoggedIn(string Token)
         {
             return HttpContext.Current.Application[Token] != null;
         }

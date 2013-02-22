@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.DataAccess", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServiceHost", "AuthServiceHost\AuthServiceHost.csproj", "{4FB0532C-6882-4CCD-9BDF-3ACEB33A66D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.SSO", "Framework.SSO\Framework.SSO.csproj", "{7195C3E9-DE7C-4B54-A46E-5B3333C1B424}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{4FB0532C-6882-4CCD-9BDF-3ACEB33A66D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FB0532C-6882-4CCD-9BDF-3ACEB33A66D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FB0532C-6882-4CCD-9BDF-3ACEB33A66D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7195C3E9-DE7C-4B54-A46E-5B3333C1B424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7195C3E9-DE7C-4B54-A46E-5B3333C1B424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7195C3E9-DE7C-4B54-A46E-5B3333C1B424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7195C3E9-DE7C-4B54-A46E-5B3333C1B424}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
