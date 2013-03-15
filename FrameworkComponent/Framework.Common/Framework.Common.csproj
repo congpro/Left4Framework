@@ -71,6 +71,11 @@
     <Compile Include="ObjectCopy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializeHelper.cs" />
+    <Compile Include="TreeBuilder\BuildChildrenContext.cs" />
+    <Compile Include="TreeBuilder\BuildRootContext.cs" />
+    <Compile Include="TreeBuilder\TreeBuilder.cs" />
+    <Compile Include="TreeBuilder\TreeNode.cs" />
+    <Compile Include="TreeBuilder\TreeNodeExtensions.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="UtilsHelper.cs" />
     <Compile Include="YMZHelper.cs" />
